@@ -5,4 +5,3 @@ Simple daily calendar application using, HTML, CSS and Javascript to save events
 [Weekday Scheduler](https://jennyking0805.github.io/Work-Day-Scheduler/)
 
 ![](/assets/images/workday-scheduler.png)
->>>>>>> 2053ed65187c272ac290b3e1aac2285644b1a182
