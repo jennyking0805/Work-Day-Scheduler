@@ -17,6 +17,10 @@ header {
   background-image: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%);
 }
 
+.container {
+  margin-bottom: 50px;
+}
+
 .jumbotron {
   text-align: center;
   background-color: transparent;
@@ -67,10 +71,10 @@ header {
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   background-color: #06AED5;
-  color: white;
+  color: black;
 }
 
-.saveBtn i:hover {
+.saveBtn:hover {
   font-size: 20px;
   transition: all .3s ease-in-out;
 }

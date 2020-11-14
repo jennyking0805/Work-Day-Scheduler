@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    var currentDate = moment().format("dddd, MMMM Do, YYYY");
+    var currentDate = moment().format("dddd, MMMM Do, YYYY, LT");
         $("#currentDay").text(currentDate);
 
     var time = [
@@ -24,44 +24,43 @@ $(document).ready(function() {
         timeRow.attr("class", "row");
 
         var timeSpan = $("<span>");
-        timeSpan.attr("class", "col-1");
+        timeSpan.attr("class", "col-1 hour");
         timeSpan.text(hour.stringTime);
         timeRow.append(timeSpan);
 
-        var timeDescription = $("<textarea>");
+        var eventDescription = $("<textarea>");
         for(i = 0; i< 7; i++) {
-            var timeDescription = $("<textarea>");
-            timeDescription.attr("class", "col description border");
+            var eventDescription = $("<textarea>");
+            eventDescription.attr("class", "col description border");
         }
         
         var saveBtn = $("<button>");
-        saveBtn.attr("class", "saveBtn", "icon");
-        saveBtn.text("icon here");
+        saveBtn.attr("class", "saveBtn oi oi-plus");
 
         saveBtn.on("click", function () {
-            var event = timeDescription.val();
+            var event = eventDescription.val();
             localStorage.setItem(hour.stringTime, event);
         });
 
         var savedValue = localStorage.getItem(hour.stringTime);
         console.log(savedValue)
             if (savedValue) {
-            timeDescription.val(savedValue);
+            eventDescription.val(savedValue);
         }
         
         var setTime = parseInt(moment().format("HH") + "00");
         var setHour = parseInt(hour.numTime);
 
         if (setTime === setHour) {
-            timeDescription.addClass("present");
+            eventDescription.addClass("present");
         } else if (setHour <= setTime) {
-            timeDescription.addClass("past");
+            eventDescription.addClass("past");
         } else {
-            timeDescription.addClass("future");
+            eventDescription.addClass("future");
         }
 
-    $(".timeblock").append(timeRow);
-        timeRow.append(timeDescription);
+    $(".time-block").append(timeRow);
+        timeRow.append(eventDescription);
         timeRow.append(saveBtn);
     });
 });
