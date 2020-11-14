@@ -1,6 +1,7 @@
-$(document).ready(function () {
-    var todaysDate = moment().format("dddd, MMMM Do, YYYY");
-    $("#currentDay").text(todaysDate);
+$(document).ready(function() {
+
+    var currentDate = moment().format("dddd, MMMM Do, YYYY");
+        $("#currentDay").text(currentDate);
 
     var time = [
         {stringTime: "7:00AM", numTime: 0700},
@@ -19,48 +20,48 @@ $(document).ready(function () {
 
     time.map((hour) => {
 
-        var timeRow =$("<div>");
-        timeRow.attribute("class", "row");
+        var timeRow = $("<div>");
+        timeRow.attr("class", "row");
 
         var timeSpan = $("<span>");
-        timeSpan.attribute("class", "col-2");
+        timeSpan.attr("class", "col-1");
         timeSpan.text(hour.stringTime);
         timeRow.append(timeSpan);
 
-        var timeDesription = $("<textarea>");
+        var timeDescription = $("<textarea>");
         for(i = 0; i< 7; i++) {
-            var timeDesription = $("<textarea>");
-            timeDesription.attribute("class", "col description border");
+            var timeDescription = $("<textarea>");
+            timeDescription.attr("class", "col description border");
         }
         
         var saveBtn = $("<button>");
-        saveBtn.attribute("class", "saveBtn");
-        saveBtn.text("Save"),
+        saveBtn.attr("class", "saveBtn", "icon");
+        saveBtn.text("icon here");
 
         saveBtn.on("click", function () {
-            var event = timeDesription.val();
+            var event = timeDescription.val();
             localStorage.setItem(hour.stringTime, event);
         });
 
         var savedValue = localStorage.getItem(hour.stringTime);
         console.log(savedValue)
             if (savedValue) {
-            timeDesription.val(savedValue);
+            timeDescription.val(savedValue);
         }
         
         var setTime = parseInt(moment().format("HH") + "00");
         var setHour = parseInt(hour.numTime);
 
         if (setTime === setHour) {
-            timeDesription.addClass("present");
+            timeDescription.addClass("present");
         } else if (setHour <= setTime) {
-            timeDesription.addclass("past");
+            timeDescription.addClass("past");
         } else {
-            timeDesription.addClass("future");
+            timeDescription.addClass("future");
         }
 
     $(".timeblock").append(timeRow);
-        timeRow.append(timeDesription);
+        timeRow.append(timeDescription);
         timeRow.append(saveBtn);
     });
 });
